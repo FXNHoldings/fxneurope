@@ -1,0 +1,13 @@
+# secrets / local env
+scripts/.env
+**/.env.local
+**/*.local
+
+# dependencies & build output
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+
+# os / editor
+.DS_Store

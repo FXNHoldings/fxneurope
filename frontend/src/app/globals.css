@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* =========================================================
+   FXN Europe — brand theme
+   Ink navy + electric indigo accent. Placeholder palette;
+   swap the hex values when real brand assets land.
+   ========================================================= */
+@theme {
+  --color-ink: #0a0e1a;
+  --color-ink-soft: #141a2e;
+  --color-paper: #ffffff;
+  --color-mist: #f5f6fb;
+
+  --color-brand-50: #eef1ff;
+  --color-brand-100: #e0e5ff;
+  --color-brand-300: #b3bdff;
+  --color-brand-500: #4f5bff;
+  --color-brand-600: #3a45e6;
+  --color-brand-700: #2c34b8;
+
+  --color-accent: #29e0c4;
+  --color-heading: #222b3c;
+  --color-body: #868686;
+
+  /* Default max content width across the site (enables `max-w-site`). */
+  --container-site: 1366px;
+
+  /* Body text uses Outfit; headings use Urbanist (see rules below). */
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-body);
+  font-family: var(--font-sans); /* Outfit */
+  font-weight: 300;
+  font-size: 18px;
+}
+
+/* Headings: Urbanist, always bold. Unlayered rule → overrides Tailwind weight utilities. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* Heading colour lives in @layer base so dark-section headings can override it
+   with a text-* utility (e.g. text-paper). */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-heading);
+  }
+}
+
+/* Top navigation bar text weight. */
+header {
+  font-weight: 600;
+}
+
+::selection {
+  background: var(--color-brand-500);
+  color: #fff;
+}
+
+/* Typography for legal / policy pages. */
+.prose-legal {
+  color: var(--color-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.prose-legal h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  color: var(--color-heading);
+}
+.prose-legal h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-heading);
+}
+.prose-legal p,
+.prose-legal ul {
+  margin-bottom: 1rem;
+}
+.prose-legal ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+}
+.prose-legal li {
+  margin-bottom: 0.4rem;
+}
+.prose-legal a {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+}
+.prose-legal strong {
+  color: var(--color-ink);
+}
+.prose-legal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+.prose-legal th,
+.prose-legal td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-legal th {
+  background: var(--color-mist);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+/* Unfilled placeholder values. */
+.prose-legal .ph {
+  background: #fff3cd;
+  color: #7a5a00;
+  padding: 0 0.35em;
+  border-radius: 0.25rem;
+  font-size: 0.92em;
+  white-space: nowrap;
+}

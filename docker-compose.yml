@@ -1,0 +1,23 @@
+# =========================================================
+# fxneurope.eu — FXN Europe corporate site (Next.js 16)
+#
+#   Browser → Nginx (TLS) → this container (127.0.0.1:3003)
+#
+# Code is bind-mounted; node_modules + .next are built INSIDE the
+# alpine container (musl) — never reuse a glibc host install.
+# Rebuild after code changes:  ./prod.sh
+# =========================================================
+
+services:
+  app:
+    image: node:20-alpine
+    container_name: fxneurope-web
+    working_dir: /app
+    command: sh -c "npm run start -- -p 3003 -H 0.0.0.0"
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "127.0.0.1:3003:3003"
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
